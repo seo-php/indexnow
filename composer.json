@@ -1,0 +1,69 @@
+{
+    "$schema": "https://getcomposer.org/schema.json",
+    "name": "seophp/indexnow",
+    "description": "Lightweight, framework-agnostic IndexNow management for PHP",
+    "license": "MIT",
+    "type": "library",
+    "keywords": [
+        "seophp",
+        "seo",
+        "indexnow"
+    ],
+    "authors": [
+        {
+            "name": "David Llobell",
+            "email": "dllobellmoya@gmail.com",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": "^8.4",
+        "psr/http-client-implementation": "^1.0",
+        "php-http/discovery": "^1.20"
+    },
+    "require-dev": {
+        "eolica/coding-standard": "^2.0",
+        "guzzlehttp/guzzle": "^7.10",
+        "pestphp/pest": "^4.0",
+        "php-http/mock-client": "^1.0",
+        "phpstan/phpstan": "^2.0",
+        "rector/rector": "^2.0",
+        "symfony/var-dumper": "^8.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Seo\\IndexNow\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Seo\\IndexNow\\Tests\\": "tests"
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "config": {
+        "sort-packages": true,
+        "allow-plugins": {
+            "pestphp/pest-plugin": true,
+            "php-http/discovery": false
+        }
+    },
+    "scripts": {
+        "lint": [
+            "ecs check"
+        ],
+        "lint:fix": [
+            "ecs check --fix"
+        ],
+        "analyse": [
+            "phpstan analyse"
+        ],
+        "test": [
+            "pest --colors=always --parallel"
+        ],
+        "refactor": [
+            "rector process"
+        ]
+    }
+}
