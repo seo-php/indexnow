@@ -6,7 +6,7 @@ namespace Seo\IndexNow;
 
 use InvalidArgumentException;
 
-final class InvalidKeyException extends InvalidArgumentException implements IndexNowException
+final class InvalidIndexNowKeyException extends InvalidArgumentException implements IndexNowException
 {
     public static function invalidFormat(string $key): self
     {

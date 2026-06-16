@@ -3,7 +3,7 @@
 declare(strict_types=1);
 
 use Seo\IndexNow\IndexNowKey;
-use Seo\IndexNow\InvalidKeyException;
+use Seo\IndexNow\InvalidIndexNowKeyException;
 
 it('accepts a valid 8-character key', function (): void {
     $key = IndexNowKey::make('abcd1234');
@@ -32,30 +32,30 @@ it('converts to string via __toString', function (): void {
 
 it('throws for an empty key', function (): void {
     IndexNowKey::make('');
-})->throws(InvalidKeyException::class);
+})->throws(InvalidIndexNowKeyException::class);
 
 it('throws for a key shorter than 8 characters', function (): void {
     IndexNowKey::make('short');
-})->throws(InvalidKeyException::class);
+})->throws(InvalidIndexNowKeyException::class);
 
 it('throws for a key longer than 128 characters', function (): void {
     IndexNowKey::make(str_repeat('a', 129));
-})->throws(InvalidKeyException::class);
+})->throws(InvalidIndexNowKeyException::class);
 
 it('throws for a key with underscores', function (): void {
     IndexNowKey::make('invalid_key_1234');
-})->throws(InvalidKeyException::class);
+})->throws(InvalidIndexNowKeyException::class);
 
 it('throws for a key with spaces', function (): void {
     IndexNowKey::make('invalid key1234');
-})->throws(InvalidKeyException::class);
+})->throws(InvalidIndexNowKeyException::class);
 
 it('throws for a key with special characters', function (): void {
     IndexNowKey::make('invalid!key@1234');
-})->throws(InvalidKeyException::class);
+})->throws(InvalidIndexNowKeyException::class);
 
 it('exception message contains the invalid key', function (): void {
     expect(fn () => IndexNowKey::make('bad'))
-        ->toThrow(InvalidKeyException::class, '"bad"')
+        ->toThrow(InvalidIndexNowKeyException::class, '"bad"')
     ;
 });

@@ -13,7 +13,7 @@ final readonly class IndexNowKey implements Stringable
     private function __construct(public readonly string $value)
     {
         if (preg_match(self::PATTERN, $value) !== 1) {
-            throw InvalidKeyException::invalidFormat($value);
+            throw InvalidIndexNowKeyException::invalidFormat($value);
         }
     }
 

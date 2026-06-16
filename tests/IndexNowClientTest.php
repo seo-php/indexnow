@@ -8,7 +8,7 @@ use Http\Mock\Client as MockClient;
 use Psr\Http\Message\RequestInterface;
 use Seo\IndexNow\Endpoint;
 use Seo\IndexNow\IndexNowClient;
-use Seo\IndexNow\InvalidKeyException;
+use Seo\IndexNow\InvalidIndexNowKeyException;
 
 it('creates a client with minimal arguments', function (): void {
     $client = IndexNowClient::create('example.com', 'abcd1234');
@@ -28,9 +28,9 @@ it('creates a client with all arguments', function (): void {
     expect($client)->toBeInstanceOf(IndexNowClient::class);
 });
 
-it('throws InvalidKeyException when key is invalid', function (): void {
+it('throws InvalidIndexNowKeyException when key is invalid', function (): void {
     IndexNowClient::create('example.com', 'bad');
-})->throws(InvalidKeyException::class);
+})->throws(InvalidIndexNowKeyException::class);
 
 it('sends a POST request to the default endpoint for a single URL', function (): void {
     $mock = new MockClient();
